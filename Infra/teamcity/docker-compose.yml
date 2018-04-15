@@ -6,6 +6,7 @@ services:
         volumes:
             - teamcity-server-datadir:/data/teamcity_server/datadir
             - teamcity-server-logs:/opt/teamcity/logs
+        restart: unless-stopped
         ports:
             - 8111:8111
     teamcity-agent:
@@ -15,6 +16,7 @@ services:
             SERVER_URL: http://teamcity:8111
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+        restart: unless-stopped
 
 
 volumes:
